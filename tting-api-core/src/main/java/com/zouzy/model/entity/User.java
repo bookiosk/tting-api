@@ -1,9 +1,6 @@
 package com.zouzy.model.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -35,7 +32,7 @@ public class User implements Serializable {
     /**
      * 用户头像
      */
-    private String avatarUrl;
+    private String userAvatar;
 
     /**
      * 性别
@@ -43,24 +40,24 @@ public class User implements Serializable {
     private Integer gender;
 
     /**
+     * 用户角色: user, admin
+     */
+    private String userRole;
+
+    /**
      * 密码
      */
     private String userPassword;
 
     /**
-     * 电话
+     * 签名 accessKey
      */
-    private String phone;
+    private String accessKey;
 
     /**
-     * 邮箱
+     * 签名 secretKey
      */
-    private String email;
-
-    /**
-     * 状态 0 - 正常
-     */
-    private Integer userStatus;
+    private String secretKey;
 
     /**
      * 创建时间
@@ -68,29 +65,17 @@ public class User implements Serializable {
     private Date createTime;
 
     /**
-     * 
+     * 更新时间
      */
     private Date updateTime;
 
     /**
      * 是否删除
      */
+    @TableLogic
     private Integer isDelete;
 
-    /**
-     * 枚举类：UserRoleEnum
-     */
-    private String userRole;
-
-    /**
-     * 星球编号
-     */
-    private String planetCode;
-
-    /**
-     * 标签 json 列表
-     */
-    private String tags;
+    // [鱼皮的学习圈](https://yupi.icu) 从 0 到 1 求职指导，斩获 offer！1 对 1 简历优化服务、2000+ 求职面试经验分享、200+ 真实简历和建议参考、25w 字前后端精选面试题
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
