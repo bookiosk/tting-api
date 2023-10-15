@@ -2,6 +2,7 @@ package com.zouzy.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.gson.Gson;
 import com.zouzy.annotation.AuthCheck;
 import com.zouzy.common.*;
 import com.zouzy.constant.CommonConstant;
@@ -13,6 +14,7 @@ import com.zouzy.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
 import com.zouzy.model.entity.InterfaceInfo;
 import com.zouzy.model.entity.User;
 import com.zouzy.model.enums.InterfaceInfoStatusEnum;
+import com.zouzy.sdk.client.TtingApiClient;
 import com.zouzy.service.InterfaceInfoService;
 import com.zouzy.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +35,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/interfaceInfo")
 @Slf4j
-public class InterfaceInfoController {
+public class  InterfaceInfoController {
 
     @Autowired
     private InterfaceInfoService interfaceInfoService;
@@ -223,6 +225,40 @@ public class InterfaceInfoController {
         boolean result = interfaceInfoService.updateById(interfaceInfo);
         return ResultUtils.success(result);
     }
+
+    /**
+     * 测试调用
+     *
+     * @param interfaceInfoInvokeRequest
+     * @param request
+     * @return
+     */
+    @PostMapping("/invoke")
+    public BaseResponse<Object> invokeInterfaceInfo(@RequestBody InterfaceInfoInvokeRequest interfaceInfoInvokeRequest,
+                                                    HttpServletRequest request) {
+        if (interfaceInfoInvokeRequest == null || interfaceInfoInvokeRequest.getId() <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        long id = interfaceInfoInvokeRequest.getId();
+        String userRequestParams = interfaceInfoInvokeRequest.getUserRequestParams();
+        // 判断是否存在
+        InterfaceInfo oldInterfaceInfo = interfaceInfoService.getById(id);
+        if (oldInterfaceInfo == null) {
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+        }
+        if (oldInterfaceInfo.getStatus() == InterfaceInfoStatusEnum.OFFLINE.getValue()) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "接口已关闭");
+        }
+        User loginUser = userService.getLoginUser(request);
+        String accessKey = loginUser.getAccessKey();
+        String secretKey = loginUser.getSecretKey();
+        TtingApiClient tempClient = new TtingApiClient(accessKey, secretKey);
+        Gson gson = new Gson();
+        com.zouzy.sdk.model.User user = gson.fromJson(userRequestParams, com.zouzy.sdk.model.User.class);
+        String usernameByPost = tempClient.getUsernameByPost(user);
+        return ResultUtils.success(usernameByPost);
+    }
+
 
 }
 
