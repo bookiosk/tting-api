@@ -1,6 +1,7 @@
 package com.zouzy.common.service;
 
-import com.yupi.yuapicommon.model.entity.InterfaceInfo;
+
+import com.zouzy.common.model.entity.InterfaceInfo;
 
 /**
  * 内部接口信息服务

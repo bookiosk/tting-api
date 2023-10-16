@@ -1,8 +1,8 @@
 package com.zouzy.common.model.vo;
 
+import com.zouzy.common.model.entity.Post;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import com.yupi.yuapicommon.model.entity.Post;
 
 /**
  * 帖子视图

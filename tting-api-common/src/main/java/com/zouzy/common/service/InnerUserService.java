@@ -1,6 +1,6 @@
 package com.zouzy.common.service;
 
-import com.yupi.yuapicommon.model.entity.User;
+import com.zouzy.common.model.entity.User;
 
 
 /**
