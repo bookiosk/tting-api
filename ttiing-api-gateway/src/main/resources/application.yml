@@ -1,0 +1,21 @@
+server:
+  port: 8090
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - AddResponseHeader=source,tting
+      routes:
+        # 设置匹配规则ID
+        - id: api_route
+          # 匹配地址
+          uri: http://localhost:8123
+          # 匹配前缀
+          predicates:
+            - Path=/api/**
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: trace

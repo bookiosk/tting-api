@@ -2,8 +2,8 @@ package com.zouzy.aop;
 
 import com.zouzy.annotation.AuthCheck;
 import com.zouzy.common.ErrorCode;
+import com.zouzy.common.model.entity.User;
 import com.zouzy.exception.BusinessException;
-import com.zouzy.model.entity.User;
 import com.zouzy.model.enums.UserRoleEnum;
 import com.zouzy.service.UserService;
 import org.apache.commons.lang3.StringUtils;

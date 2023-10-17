@@ -1,7 +1,7 @@
 package com.zouzy.service;
 
-import com.zouzy.model.entity.UserInterfaceInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zouzy.common.model.entity.UserInterfaceInfo;
 
 /**
 * @author zouzhenyu

@@ -138,6 +138,11 @@
             <artifactId>tting-api-sdk</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.zouzy</groupId>
+            <artifactId>tting-api-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

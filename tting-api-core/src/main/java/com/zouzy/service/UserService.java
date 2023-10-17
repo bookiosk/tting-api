@@ -1,13 +1,11 @@
 package com.zouzy.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zouzy.common.model.entity.User;
 import com.zouzy.model.dto.user.UserQueryRequest;
-import com.zouzy.model.entity.User;
 import com.zouzy.model.vo.LoginUserVO;
 import com.zouzy.model.vo.UserVO;
-import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

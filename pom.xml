@@ -19,6 +19,7 @@
         <module>tting-api-sdk</module>
         <module>tting-api-interface</module>
         <module>tting-api-common</module>
+        <module>ttiing-api-gateway</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

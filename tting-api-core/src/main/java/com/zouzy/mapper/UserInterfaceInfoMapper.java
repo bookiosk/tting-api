@@ -1,7 +1,7 @@
 package com.zouzy.mapper;
 
-import com.zouzy.model.entity.UserInterfaceInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zouzy.common.model.entity.UserInterfaceInfo;
 
 /**
 * @author zouzhenyu

@@ -3,40 +3,29 @@ package com.zouzy.service.impl;
 import static com.zouzy.constant.UserConstant.USER_LOGIN_STATE;
 
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.RandomUtil;
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
-import cn.hutool.json.JSONUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zouzy.common.ErrorCode;
+import com.zouzy.common.model.entity.User;
 import com.zouzy.exception.BusinessException;
 import com.zouzy.mapper.UserMapper;
 import com.zouzy.model.dto.user.UserQueryRequest;
-import com.zouzy.model.entity.User;
 import com.zouzy.model.enums.UserRoleEnum;
 import com.zouzy.model.vo.LoginUserVO;
 import com.zouzy.model.vo.UserVO;
 import com.zouzy.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
 
