@@ -1,6 +1,7 @@
 package com.zouzy.model.to;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.zouzy.common.model.entity.User;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
