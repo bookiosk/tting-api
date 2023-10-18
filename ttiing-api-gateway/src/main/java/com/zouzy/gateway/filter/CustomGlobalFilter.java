@@ -7,6 +7,7 @@ import com.zouzy.common.service.InnerUserInterfaceInfoService;
 import com.zouzy.common.service.InnerUserService;
 import com.zouzy.sdk.utils.SignUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -25,6 +26,7 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,13 +37,13 @@ import java.util.Objects;
 @Component
 public class CustomGlobalFilter implements GlobalFilter, Ordered {
 
-    @Autowired
+    @DubboReference
     private InnerUserService innerUserService;
 
-    @Autowired
+    @DubboReference
     private InnerInterfaceInfoService innerInterfaceInfoService;
 
-    @Autowired
+    @DubboReference
     private InnerUserInterfaceInfoService innerUserInterfaceInfoService;
 
     private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1");
@@ -117,8 +119,6 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
         }
         // todo 是否还有调用次数
         // 5. 请求转发，调用模拟接口 + 响应日志
-        //        Mono<Void> filter = chain.filter(exchange);
-        //        return filter;
         return handleResponse(exchange, chain, interfaceInfo.getId(), invokeUser.getId());
 
     }

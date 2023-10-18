@@ -36,6 +36,8 @@
         <jasypt.verison>3.0.4</jasypt.verison>
         <redisson.version>3.17.7</redisson.version>
         <jackson.version>2.15.2</jackson.version>
+        <dubbo.version>3.0.9</dubbo.version>
+        <nacos.version>2.1.0</nacos.version>
     </properties>
 
     <dependencyManagement>
@@ -52,12 +54,6 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatisplus.version}</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/com.github.binarywang/wx-java-mp-spring-boot-starter -->
-            <dependency>
-                <groupId>com.github.binarywang</groupId>
-                <artifactId>wx-java-mp-spring-boot-starter</artifactId>
-                <version>${binarywang.version}</version>
             </dependency>
             <!-- https://doc.xiaominfo.com/knife4j/documentation/get_start.html-->
             <dependency>
@@ -111,6 +107,17 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
                 <version>${jackson.version}</version>
+            </dependency>
+            <!--dubbo整合nacos-->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

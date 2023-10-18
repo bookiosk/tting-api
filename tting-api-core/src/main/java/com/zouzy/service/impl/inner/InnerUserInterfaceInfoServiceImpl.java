@@ -2,14 +2,15 @@ package com.zouzy.service.impl.inner;
 
 import com.zouzy.common.service.InnerUserInterfaceInfoService;
 import com.zouzy.service.UserInterfaceInfoService;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-@Service
+@DubboService
 public class InnerUserInterfaceInfoServiceImpl implements InnerUserInterfaceInfoService {
-    @Autowired
+    @Resource
     private UserInterfaceInfoService userInterfaceInfoService;
 
     @Override

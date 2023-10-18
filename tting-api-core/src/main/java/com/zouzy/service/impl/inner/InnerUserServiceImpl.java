@@ -8,13 +8,16 @@ import com.zouzy.common.service.InnerUserService;
 import com.zouzy.exception.BusinessException;
 import com.zouzy.mapper.UserMapper;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+import javax.annotation.Resource;
+
+@DubboService
 public class InnerUserServiceImpl implements InnerUserService {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @Override

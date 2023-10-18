@@ -7,11 +7,12 @@ import com.zouzy.common.service.InnerInterfaceInfoService;
 import com.zouzy.exception.BusinessException;
 import com.zouzy.mapper.InterfaceInfoMapper;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-@Service
+@DubboService
 public class InnerInterfaceInfoServiceImpl implements InnerInterfaceInfoService {
     @Resource
     private InterfaceInfoMapper interfaceInfoMapper;

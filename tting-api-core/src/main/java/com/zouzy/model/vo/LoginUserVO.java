@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Objects;
 
 /**
  * 已登录用户视图（脱敏）
